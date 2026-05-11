@@ -64,7 +64,10 @@ export const TRTPillars = () => (
                 alt={p.title}
                 className="w-[140px] h-[140px] rounded-full object-cover"
                 style={{ border: "3px solid var(--border-light)" }}
+                width={140}
+                height={140}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <h3
