@@ -76,16 +76,10 @@ export const TRTLocations = () => {
                 </button>
 
                 <div className={`space-y-2.5 text-sm ${isOpen ? "block" : "hidden"} md:block`} style={{ color: "#1a1a2e", fontFamily: "Inter, sans-serif" }}>
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.name}, ${l.address}, ${l.cityStateZip}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-2 hover:opacity-70 transition-opacity"
-                    style={{ color: "#1a1a2e", textDecoration: "none" }}
-                  >
+                  <div className="flex items-start gap-2">
                     <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: "#E8670A" }} />
-                    <div className="underline underline-offset-2">{l.address}<br />{l.cityStateZip}</div>
-                  </a>
+                    <div>{l.address}<br />{l.cityStateZip}</div>
+                  </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
                     <span>{l.hours}</span>
