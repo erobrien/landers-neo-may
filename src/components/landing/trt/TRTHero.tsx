@@ -83,7 +83,7 @@ export const TRTHero = () => {
               fontWeight: 700,
             }}
           >
-            Get Your Edge Back.
+            Git Your Edge Back.
             <br />
             <span style={{ color: COLORS.orange }}>In One Visit.</span>
           </h1>
