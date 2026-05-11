@@ -1,24 +1,33 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { TRTHeader } from "@/components/landing/trt/TRTHeader";
 import { TRTHero } from "@/components/landing/trt/TRTHero";
 import { TRTTrustBar } from "@/components/landing/trt/TRTTrustBar";
-import { TRTHowItWorks } from "@/components/landing/trt/TRTHowItWorks";
-import { TRTResults } from "@/components/landing/trt/TRTResults";
-import { TRTManifesto } from "@/components/landing/trt/TRTManifesto";
-import { TRTMarquee } from "@/components/landing/trt/TRTMarquee";
-import { TRTPillars } from "@/components/landing/trt/TRTPillars";
-import { TRTFinalCTA } from "@/components/landing/trt/TRTFinalCTA";
-import { TRTLocations } from "@/components/landing/trt/TRTLocations";
-import { TRTFAQ } from "@/components/landing/trt/TRTFAQ";
-import { TRTFooter } from "@/components/landing/trt/TRTFooter";
 import { TRTMobileCTA } from "@/components/landing/trt/TRTMobileCTA";
 import { SectionReveal } from "@/components/landing/trt/SectionReveal";
 
+// Below-the-fold: code-split so the hero ships in the smallest possible chunk.
+const TRTHowItWorks = lazy(() => import("@/components/landing/trt/TRTHowItWorks").then((m) => ({ default: m.TRTHowItWorks })));
+const TRTManifesto = lazy(() => import("@/components/landing/trt/TRTManifesto").then((m) => ({ default: m.TRTManifesto })));
+const TRTResults = lazy(() => import("@/components/landing/trt/TRTResults").then((m) => ({ default: m.TRTResults })));
+const TRTPillars = lazy(() => import("@/components/landing/trt/TRTPillars").then((m) => ({ default: m.TRTPillars })));
+const TRTMarquee = lazy(() => import("@/components/landing/trt/TRTMarquee").then((m) => ({ default: m.TRTMarquee })));
+const TRTLocations = lazy(() => import("@/components/landing/trt/TRTLocations").then((m) => ({ default: m.TRTLocations })));
+const TRTFAQ = lazy(() => import("@/components/landing/trt/TRTFAQ").then((m) => ({ default: m.TRTFAQ })));
+const TRTFinalCTA = lazy(() => import("@/components/landing/trt/TRTFinalCTA").then((m) => ({ default: m.TRTFinalCTA })));
+const TRTFooter = lazy(() => import("@/components/landing/trt/TRTFooter").then((m) => ({ default: m.TRTFooter })));
+
+const Fallback = () => <div style={{ minHeight: 320 }} aria-hidden="true" />;
+
 const NewLandingPage = () => {
   useEffect(() => {
-    document.title = "TRT in Virginia | Testing | Men's Wellness Centers";
+    document.title = "TRT in Virginia | Men's Wellness Centers";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Provider-supervised testosterone replacement therapy at 3 Virginia locations. Testing and results reviewed in-visit. Walk in today.");
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Provider-supervised testosterone replacement therapy at 3 Virginia centers. Testing and results reviewed in-visit. Walk in today."
+      );
+    }
   }, []);
 
   return (
@@ -27,16 +36,20 @@ const NewLandingPage = () => {
       <main className="flex-1">
         <TRTHero />
         <SectionReveal><TRTTrustBar /></SectionReveal>
-        <SectionReveal><TRTHowItWorks /></SectionReveal>
-        <SectionReveal><TRTManifesto /></SectionReveal>
-        <SectionReveal><TRTResults /></SectionReveal>
-        <SectionReveal><TRTPillars /></SectionReveal>
-        <SectionReveal><TRTMarquee /></SectionReveal>
-        <SectionReveal><TRTLocations /></SectionReveal>
-        <SectionReveal><TRTFAQ /></SectionReveal>
-        <SectionReveal><TRTFinalCTA /></SectionReveal>
+        <Suspense fallback={<Fallback />}>
+          <SectionReveal><TRTHowItWorks /></SectionReveal>
+          <SectionReveal><TRTManifesto /></SectionReveal>
+          <SectionReveal><TRTResults /></SectionReveal>
+          <SectionReveal><TRTPillars /></SectionReveal>
+          <SectionReveal><TRTMarquee /></SectionReveal>
+          <SectionReveal><TRTLocations /></SectionReveal>
+          <SectionReveal><TRTFAQ /></SectionReveal>
+          <SectionReveal><TRTFinalCTA /></SectionReveal>
+        </Suspense>
       </main>
-      <TRTFooter />
+      <Suspense fallback={null}>
+        <TRTFooter />
+      </Suspense>
       <TRTMobileCTA />
       <div className="md:hidden" style={{ height: 56 }} aria-hidden="true" />
     </div>
@@ -44,4 +57,3 @@ const NewLandingPage = () => {
 };
 
 export default NewLandingPage;
-
