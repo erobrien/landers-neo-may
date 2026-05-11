@@ -1,4 +1,4 @@
-import imgManifesto from "@/assets/lp/man-athletic-smiling.jpeg";
+import imgManifesto from "@/assets/lp/man-athletic-smiling.webp";
 import { Quote } from "lucide-react";
 
 export const TRTManifesto = () => {
