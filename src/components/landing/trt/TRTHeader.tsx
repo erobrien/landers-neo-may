@@ -31,6 +31,10 @@ export const TRTHeader = () => {
           src="/logos/Text_Logo_white.png"
           alt="Men's Wellness Centers"
           className="h-7 w-auto"
+          width={140}
+          height={28}
+          decoding="async"
+          fetchPriority="high"
         />
 
         {/* Desktop right */}

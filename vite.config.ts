@@ -20,4 +20,15 @@ export default defineConfig(({ mode }) => ({
       "react-dom/client": path.resolve(__dirname, "./node_modules/react-dom/client"),
     },
   },
+  build: {
+    target: "es2020",
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
+  },
 }));
