@@ -111,20 +111,15 @@ export const TRTFinalCTA = () => {
                 Center Locations
               </div>
               <ul className="space-y-2">
-                {[
-                  { label: "Richmond, VA", to: "/locations/richmond" },
-                  { label: "Newport News, VA", to: "/locations/newport-news" },
-                  { label: "Virginia Beach, VA", to: "/locations/virginia-beach" },
-                ].map((l) => (
-                  <li key={l.label} className="flex items-center gap-2">
+                {["Richmond, VA", "Newport News, VA", "Virginia Beach, VA"].map((label) => (
+                  <li key={label} className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 flex-shrink-0" style={{ color: "#E8670A" }} />
-                    <a
-                      href={l.to}
-                      className="text-base underline underline-offset-4 hover:text-white transition-colors"
+                    <span
+                      className="text-base"
                       style={{ color: "rgba(255,255,255,0.92)", fontFamily: "Inter, sans-serif" }}
                     >
-                      {l.label}
-                    </a>
+                      {label}
+                    </span>
                   </li>
                 ))}
               </ul>
