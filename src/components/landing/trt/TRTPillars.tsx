@@ -27,14 +27,14 @@ const pillars = [
 ];
 
 export const TRTPillars = () => (
-  <section className="py-14 md:py-20" style={{ background: "#000033" }}>
+  <section className="py-14 md:py-20" style={{ background: "var(--bg-warm-grey)" }}>
     <div className="max-w-[1200px] mx-auto px-6">
       <h2
         className="font-bold uppercase text-center mb-12"
         style={{
           fontFamily: "Oswald, sans-serif",
           fontSize: "clamp(28px, 4vw, 40px)",
-          color: "#FFFFFF",
+          color: "var(--bg-black)",
           fontWeight: 700,
         }}
       >
@@ -48,16 +48,14 @@ export const TRTPillars = () => (
             key={p.title}
             className="rounded-xl overflow-hidden text-center transition-all duration-300"
             style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.10)",
+              background: "var(--bg-white)",
+              border: "1px solid var(--border-light)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.09)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              e.currentTarget.style.borderColor = "var(--accent-orange)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+              e.currentTarget.style.borderColor = "var(--border-light)";
             }}
           >
             <div className="flex justify-center mt-6">
@@ -65,19 +63,19 @@ export const TRTPillars = () => (
                 src={p.image}
                 alt={p.title}
                 className="w-[140px] h-[140px] rounded-full object-cover"
-                style={{ border: "3px solid rgba(255,255,255,0.15)" }}
+                style={{ border: "3px solid var(--border-light)" }}
                 loading="lazy"
               />
             </div>
             <h3
               className="font-bold text-base uppercase mt-4 tracking-wide"
-              style={{ fontFamily: "Oswald, sans-serif", color: "#FFFFFF", fontWeight: 700 }}
+              style={{ fontFamily: "Oswald, sans-serif", color: "var(--bg-black)", fontWeight: 700 }}
             >
               {p.title}
             </h3>
             <p
               className="text-sm px-5 pb-6 mt-2 leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.65)", fontFamily: "Inter, sans-serif" }}
+              style={{ color: "var(--text-dark-grey)", fontFamily: "Inter, sans-serif" }}
             >
               {p.desc}
             </p>
